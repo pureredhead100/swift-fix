@@ -1,4 +1,4 @@
-// Swift Fix - Fake Drive Scan
+// Swift Fix - Fake Drive Scan and Organizer
 
 // Fake drive files
 const fakeDrive = [
@@ -46,9 +46,3 @@ function organizeByFormat() {
 
   document.getElementById("fileResults").innerHTML = organizedHTML;
 }
-
-// Find duplicates (simple example - none in fake drive yet)
-function findDuplicates() {
-  alert("No duplicates found!");
-}
-
