@@ -46,3 +46,6 @@ function organizeByFormat() {
 
   document.getElementById("fileResults").innerHTML = organizedHTML;
 }
+function buttonClicked() {
+  alert("Boss Rave runs this world!");
+}
