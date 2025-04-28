@@ -1,28 +1,54 @@
-// Swift Fix - Simple Organizer Functions
+// Swift Fix - Fake Drive Scan
 
-// When the page loads, greet the user
-document.addEventListener("DOMContentLoaded", () => {
-  console.log("Swift Fix is ready to organize your chaos!");
-});
+// Fake drive files
+const fakeDrive = [
+  "Vacation.jpg",
+  "Taxes2023.pdf",
+  "FamilyPhotos.zip",
+  "Resume.docx",
+  "GroceryList.txt",
+  "Song.mp3",
+  "SchoolProject.pptx",
+  "RecipeCollection.pdf",
+  "WorkoutPlan.xlsx"
+];
 
-// Example function: Scan for files
+// Function to scan and display files
 function scanFiles() {
-  alert("Scanning files... (This would scan drives in the full app!)");
+  const fileList = fakeDrive.map(file => `<li>${file}</li>`).join("");
+  document.getElementById("fileResults").innerHTML = `<ul>${fileList}</ul>`;
 }
 
-// Example function: Organize by name
+// Function to organize by name
 function organizeByName() {
-  alert("Organizing files by name... (Smart sorting would happen here!)");
+  const sortedDrive = [...fakeDrive].sort();
+  const fileList = sortedDrive.map(file => `<li>${file}</li>`).join("");
+  document.getElementById("fileResults").innerHTML = `<ul>${fileList}</ul>`;
 }
 
-// Example function: Organize by format
+// Function to organize by format
 function organizeByFormat() {
-  alert("Organizing files by format... (Grouping similar file types!)");
+  const formats = {};
+  fakeDrive.forEach(file => {
+    const extension = file.split(".").pop();
+    if (!formats[extension]) {
+      formats[extension] = [];
+    }
+    formats[extension].push(file);
+  });
+
+  let organizedHTML = "";
+  for (const format in formats) {
+    organizedHTML += `<h4>.${format} Files</h4><ul>`;
+    organizedHTML += formats[format].map(file => `<li>${file}</li>`).join("");
+    organizedHTML += `</ul>`;
+  }
+
+  document.getElementById("fileResults").innerHTML = organizedHTML;
 }
 
-// Example function: Detect duplicates
+// Find duplicates (simple example - none in fake drive yet)
 function findDuplicates() {
-  alert("Looking for duplicate files... (Comparing names and formats!)");
+  alert("No duplicates found!");
 }
 
-// Hook up button actions (later if you add buttons in HTML)
